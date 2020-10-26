@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 
 public class CaeserCipher {
 	public static void main (String[] arg) {
-	String alphabet = "abcdefghijklmnopqrstuvwzyz";
+	String alphabet = "abcdefghijklmnopqrstuvwxyz";
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	System.out.println("Would you like to encode or decode a message? (enter 'e' or 'd')");
 	try {
@@ -34,7 +34,7 @@ public class CaeserCipher {
 		for (int i = 0; i < message.length(); i++) {
 			if (Character.isLetter(message.charAt(i))) {
 			   int index = alphabet.indexOf(message.charAt(i));
-			   index = index + shiftNum;
+			   index = (index + shiftNum) % 26;
 			   newMessage = newMessage + alphabet.charAt(index);
 			} else {
 				newMessage = newMessage + message.charAt(i);
@@ -49,7 +49,7 @@ public class CaeserCipher {
 		for (int i = 0; i < message.length(); i++) {
 			if (Character.isLetter(message.charAt(i))) {
 			   int index = alphabet.indexOf(message.charAt(i));
-			   index = index - shiftNum;
+			   index = (26 + index - shiftNum) % 26;
 			   newMessage = newMessage + alphabet.charAt(index);
 			} else {
 				newMessage = newMessage + message.charAt(i);
